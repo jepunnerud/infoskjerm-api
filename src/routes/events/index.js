@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Router from 'koa-router';
 
-const eventsURL = 'https://lego.abakus.no/api/v1/events/';
+const eventsURL = 'https://lego.abakus.no/api/v1/events?date_after=2023-04-30';
 
 let eventsCache;
 
@@ -43,6 +43,8 @@ setInterval(getEventsFromAbakus, 30 * 1000);
 const events = async (ctx) => {
   ctx.body = eventsCache;
 };
+
+console.log(events);
 
 const router = new Router();
 router.get('/', events);
